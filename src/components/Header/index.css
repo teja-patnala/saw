@@ -1,0 +1,22 @@
+.heading-link{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    margin-right: 4%;
+}
+.link{
+    text-decoration: none;
+    color: rgb(163, 141, 141);
+    margin: 4px;
+}
+.cart-icon{
+    height: 30px;
+    width: 30px;
+    color: white;
+}
+.user-name{
+    font-size: 15px;
+    color: white;
+    padding-right: 5px;
+}

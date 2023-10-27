@@ -1,0 +1,21 @@
+.icon-styling{
+    height: 20px;
+    width: 20px;
+}
+
+::-webkit-scrollbar {
+    width: 0; /* Hide the scrollbar */
+  }
+.printer-icon{
+    height: 30px;
+    width: 30px;
+    color:black;
+}
+.ac-icon{
+    height: 20px;
+    width: 20px;
+    margin:5px;
+}
+.tone{
+   color: black;
+}
