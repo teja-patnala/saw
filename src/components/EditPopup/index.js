@@ -123,6 +123,7 @@ export default function EditPopup({ data }) {
                   <ItemNameStylingOne>{`Price (INR)`}</ItemNameStylingOne>
                   <Input
                     type="number"
+                    min="0" 
                     value={formData.price}
                     onChange={handlePriceChange}
                   />
@@ -133,6 +134,7 @@ export default function EditPopup({ data }) {
                     <MinusButtonIcon onClick={decrement}>-</MinusButtonIcon>
                     <Input
                       type="number"
+                      min="0"
                       value={formData.quantity}
                       onChange={handleQuantityChange}
                     />

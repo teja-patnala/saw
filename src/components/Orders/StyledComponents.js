@@ -142,9 +142,9 @@ display:flex;
 flex-direction:column;
 align-items:flex-start;
 justify-content:flex-start;
-width:20%;
+width:27%;
 margin-left:10px;
-min-width:200px;
+max-width:170px;
 padding:0px;
 overflow:hide;
 `

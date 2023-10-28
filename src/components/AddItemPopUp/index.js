@@ -85,6 +85,7 @@ export default function AddItemPopup (){
                   required
                   type="number"
                   name="price"
+                  min="0" 
                   placeholder="Enter price"
                   value={formData.price}
                   onChange={handleInputChange}
@@ -96,6 +97,7 @@ export default function AddItemPopup (){
                   required
                   type="number"
                   name="quantity"
+                  min="0" 
                   placeholder="Enter quantity"
                   value={formData.quantity}
                   onChange={handleInputChange}

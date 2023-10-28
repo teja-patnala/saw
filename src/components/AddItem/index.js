@@ -50,6 +50,9 @@ export default function AddItem({ itemData }){
     case "Approve":
       messageStyling = "blueviolet";
       break;
+    case "":
+      messageStyling = "white";
+      break;
     default:
       messageStyling = "orange";
   }

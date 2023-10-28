@@ -8,7 +8,7 @@ import {GiMilkCarton,GiFoodChain,GiKitchenKnives,GiGoat} from "react-icons/gi"
 import AddItem from "../AddItem"
 import "./index.css"
 import { db } from "../../firestore";
-import { collection, query, getDocs} from 'firebase/firestore'; // Import Firestore components
+import { collection, query,onSnapshot} from 'firebase/firestore'; // Import Firestore components
 
 
 export default function Orders(){
@@ -17,23 +17,29 @@ export default function Orders(){
     const [allFilteredData, setAllFilteredData] = useState([])
 
 
-    useEffect(()=>{
-        (async  function fetchData(){
-            try{
-                console.log("hii",allItemsData)
-                const q = query(collection(db,"products"));
-                const querySnapshot = await getDocs(q);
-                const productsArray = [];
-                querySnapshot.forEach((doc)=>{
-                    productsArray.push({id:doc.id,...doc.data()});
-                })
-                setAllItemsData(productsArray)
-                setAllFilteredData([allItemsData.filter((item) => item.productName.includes(search))])
-            }catch(error){
-                console.log(error)
-            }
-        })()
-    })
+    useEffect(() => {
+        // Set up a real-time listener for changes in the Firestore collection
+        const q = query(collection(db, 'products'));
+        const unsubscribe = onSnapshot(q, (snapshot) => {
+          const productsArray = [];
+          snapshot.forEach((doc) => {
+            productsArray.push({ id: doc.id, ...doc.data() });
+          });
+          setAllItemsData(productsArray);
+        });
+    
+        return () => {
+          // Unsubscribe from the snapshot listener when the component unmounts
+          unsubscribe();
+        };
+      }, []);
+    
+      useEffect(() => {
+        const filteredData = allItemsData.filter((item) =>
+          item.productName.toLowerCase().includes(search.toLowerCase())
+        );
+        setAllFilteredData(filteredData);
+      }, [search, allItemsData]);
 
     return(
         <OrdersContainer>
@@ -97,13 +103,13 @@ export default function Orders(){
                     <AllSubUserOderedItems>
                         <TableColumnOn1>Product name</TableColumnOn1>
                         <TablecolumnTwo>Brand</TablecolumnTwo>
-                        <TablecolumnTwo>Price</TablecolumnTwo>
-                        <TablecolumnTwo>Quantity</TablecolumnTwo>
+                        <TablecolumnTwo>Price (INR)</TablecolumnTwo>
+                        <TablecolumnTwo>Quantity (Kg)</TablecolumnTwo>
                         <TablecolumnTwo>Total</TablecolumnTwo> 
                         <TablecolumnTwo>Status</TablecolumnTwo>
                     </AllSubUserOderedItems>
                 </AllUserOderedItems>
-                {allFilteredData && allItemsData.map(itemData=><AddItem key={itemData.productName} itemData = {itemData}/>)}
+                {allFilteredData && allFilteredData.map(itemData=><AddItem key={itemData.productName} itemData = {itemData}/>)}
             </OrdersDetailsContainerOfSupplierr>
         </OrdersContainer>
     )
