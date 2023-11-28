@@ -2,12 +2,12 @@ import {initializeApp} from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
  
 const firebaseConfig = {
-  apiKey: "AIzaSyBCdVWdG02lHiU6muGt4k-NmdgCDqAo0As",
-  authDomain: "sawone-b3fae.firebaseapp.com",
-  projectId: "sawone-b3fae",
-  storageBucket: "sawone-b3fae.appspot.com",
-  messagingSenderId: "302903918735",
-  appId: "1:302903918735:web:e6b2499e1e7f15485db0fa"
+  apiKey: "AIzaSyBG39toMDUGLAPJHncwWQ-MASn5oeWs8sE",
+  authDomain: "caw-task.firebaseapp.com",
+  projectId: "caw-task",
+  storageBucket: "caw-task.appspot.com",
+  messagingSenderId: "932679545042",
+  appId: "1:932679545042:web:67cb2967ed63cce7983d0b"
 };
 
 const app = initializeApp(firebaseConfig);
